@@ -1,16 +1,48 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+
     <title>💩🔥🌩</title>
     <style type="text/css">
         body {
-            font-size:120px;
+            font-size:24px;
+            font-family: 'Comic Sans MS';
+            line-height:50px;
+        }
+        #theManHimself {
+            font-family: 'Arial';
+            font-size:30px;
+            font-weight:bold;
         }
     </style>
 </head>
 <body>
-    <div>
-        <a class="twitter-timeline" href="https://twitter.com/davidstanley01?ref_src=twsrc%5Etfw">💩🔥🌩</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <div id="theManHimself">
+        <img src="http://0.gravatar.com/avatar/711af2dcfc07367e3ab43856b63f8060" height="50" />
+        David Stanley's advice:
     </div>
+    <div id="tweets">
+
+    </div>
+
+
+    <script>
+        $(document).ready(function(){
+            var tweets = [];
+            $.get('tweets.json', function(response){
+                tweets = response;
+
+                for (var i=0; i<response.length; i++) {
+                    var tweet = response[i];
+                    $('#tweets').append(tweet + '<br />');
+                }
+
+            })
+        });
+    </script>
 </body>
 </html>
